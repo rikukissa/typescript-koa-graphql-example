@@ -1,6 +1,6 @@
-# Typescript - Koa - GraphQL example project 🍞
+# 💁‍♂️ Typescript - Koa - GraphQL example project  🎉
 
-Quick bare minimum setup for new GraphQL API projects with a bare minimum README file. It's so minimalistic that eating bread with butter seems excessive afterwards.
+Quick bare minimum setup for new GraphQL API projects with a bare minimum README file. It's so minimalistic that eating bread with butter seems excessive afterwards 🍞.
 
 ### What it includes
 
