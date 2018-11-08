@@ -9,9 +9,7 @@
     "start": "nodemon -e ts,graphql --exec ts-node -- src/index.ts",
     "start:prod": "ts-node src/index.ts",
     "test": "jest",
-    "test:watch": "jest --watch",
-    "precommit": "lint-staged",
-    "gen:full-schema": "node generate-full-schema.js"
+    "test:watch": "jest --watch"
   },
   "dependencies": {
     "@types/graphql": "^14.0.3",
@@ -22,7 +20,6 @@
     "app-module-path": "^2.2.0",
     "graphql": "^14.0.2",
     "graphql-import": "^0.7.1",
-    "graphql-tools": "^4.0.3",
     "koa": "^2.6.1",
     "koa-graphql": "^0.8.0",
     "koa-mount": "^4.0.0",
@@ -38,12 +35,6 @@
     "prettier": "^1.13.5",
     "supertest": "^3.3.0",
     "ts-jest": "^23.10.4"
-  },
-  "lint-staged": {
-    "src/**/*.{ts,graphql}": [
-      "prettier --write",
-      "git add"
-    ]
   },
   "jest": {
     "transform": {
