@@ -1,9 +1,14 @@
-# Typescript - Koa - GraphQL example project
+# Typescript - Koa - GraphQL example project 🍞
 
-Quick bare minimum setup for new GraphQL API projects with a bare minimum README file
+Quick bare minimum setup for new GraphQL API projects with a bare minimum README file. It's so minimalistic that eating bread with butter seems excessive afterwards.
 
-- Generates schemas automatically from defined models and resolvers
-- Has first few unit tests in place that make requests to the Koa app and assert the responses
+### What it includes
+
+- **Typescript + TSLint** setup with pretty default config. Turned off few of the most annoying linting rules.
+- Simple **[Koa](https://koajs.com/)** setup with 2 example resources: posts and comments
+- Generates schemas automatically from defined models and resolvers (this is quite nifty)
+- First few unit tests **([Jest](https://jestjs.io/))** in place that make requests to the Koa app and assert the responses
+- **not much more than that** ✨. Not a big fan of huge boilerplate projects.
 
 Follows a **model-controller-service** pattern meaning the directory/file structure inside the `features` directory is:
 
