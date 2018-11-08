@@ -12,9 +12,7 @@ Quick bare minimum setup for new GraphQL API projects with a bare minimum README
 
 #### Other small things
 
-- Lets you import stuff with absolute paths: 
-
-`import model from 'src/features/comments/model'` **vs** `import model from '../../../features/comments/model'`
+- Lets you import stuff with absolute paths i.e. `import model from 'src/features/comments/model'` 
 
 ## Get started:
 
@@ -31,7 +29,7 @@ Cheers and happy coding ✌️
 
 Follows a **model-controller-service** pattern meaning the directory/file structure inside the `features` directory is:
 
-- <feature / resource name i.e. posts>
+- <feature / resource name e.g. posts>
 
   - **model.ts** defines all models this feature needs. Models have nasty looking annotations, so [type-graphql](https://github.com/19majkel94/type-graphql) can generate a graphql schema for you. Trust me, maintaining both your TS types and a graphql schema is no fun.
 
