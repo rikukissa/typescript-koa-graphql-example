@@ -1,5 +1,5 @@
 import { getPosts, createPost } from "./service";
-import { Post } from "./model";
+import { Post, PostInput } from "./model";
 import { Resolver, Query, Mutation, Arg } from "type-graphql";
 
 @Resolver(Post)
@@ -10,7 +10,11 @@ export class PostResolver {
   }
 
   @Mutation()
-  createPost(@Arg("text") text: string): Post {
-    return createPost(text);
+  createPost(@Arg("post", type => PostInput)
+  {
+    text,
+    tags
+  }: PostInput): Post {
+    return createPost(text, tags);
   }
 }

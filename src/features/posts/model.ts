@@ -1,15 +1,15 @@
-import { ObjectType, Field } from "type-graphql";
+import { ObjectType, Field, InputType } from "type-graphql";
 import { Comment } from "../comments/model";
 
 @ObjectType()
 export class Tag {
-  @Field() id: string;
+  @Field() id: number;
   @Field() text: string;
 }
 
 @ObjectType()
 export class Post {
-  @Field() id: string;
+  @Field() id: number;
 
   @Field() text: string;
 
@@ -17,5 +17,18 @@ export class Post {
   comments: Comment[];
 
   @Field(type => [Tag])
+  tags: Tag[];
+}
+
+@InputType({ description: "New tag" })
+export class TagInput implements Partial<Tag> {
+  @Field() text: string;
+}
+
+@InputType({ description: "New post data" })
+export class PostInput implements Partial<Post> {
+  @Field() text: string;
+
+  @Field(type => [TagInput])
   tags: Tag[];
 }
