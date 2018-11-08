@@ -1,6 +1,6 @@
+import { Resolver, Query, Mutation, Arg } from "type-graphql";
 import { getPosts, createPost } from "./service";
 import { Post, PostInput } from "./model";
-import { Resolver, Query, Mutation, Arg } from "type-graphql";
 
 @Resolver(Post)
 export class PostResolver {
