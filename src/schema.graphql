@@ -1,0 +1,1 @@
+# import Post, Query.*, Mutation.* from "src/features/posts/posts.graphql"

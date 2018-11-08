@@ -1,0 +1,21 @@
+# import Comment from 'src/features/comments/comments.graphql'
+
+type Post {
+  comments: [Comment]
+  id: ID!
+  text: String!
+  tags: [String]
+}
+
+type Query {
+  posts: [Post]
+}
+
+input PostInput {
+  text: String!
+  tags: [String]
+}
+
+type Mutation {
+  createPost(text: String): Post
+}
