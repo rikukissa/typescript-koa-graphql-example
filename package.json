@@ -21,12 +21,13 @@
     "app-module-path": "^2.2.0",
     "graphql": "^14.0.2",
     "graphql-import": "^0.7.1",
-    "graphql-schema-typescript": "^1.2.8",
     "graphql-tools": "^4.0.3",
     "koa": "^2.6.1",
     "koa-graphql": "^0.8.0",
     "koa-mount": "^4.0.0",
+    "reflect-metadata": "^0.1.12",
     "ts-node": "^7.0.1",
+    "type-graphql": "^0.15.0",
     "typescript": "^3.0.1"
   },
   "devDependencies": {

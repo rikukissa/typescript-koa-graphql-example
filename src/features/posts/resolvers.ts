@@ -1,21 +1,16 @@
-import { getPosts } from "./service";
-import {
-  GQLResolver,
-  MutationToCreatePostArgs,
-  GQLPost
-} from "src/types/schema";
+import { getPosts, createPost } from "./service";
+import { Post } from "./model";
+import { Resolver, Query, Mutation, Arg } from "type-graphql";
 
-export const postResolvers: GQLResolver = {
-  Query: {
-    posts() {
-      return getPosts();
-    }
-  },
-  Mutation: {
-    createPost(parent: any, args: MutationToCreatePostArgs): GQLPost {
-      console.log(args);
-
-      return getPosts()[0];
-    }
+@Resolver(Post)
+export class PostResolver {
+  @Query(returns => [Post])
+  posts() {
+    return getPosts();
   }
-};
+
+  @Mutation()
+  createPost(@Arg("text") text: string): Post {
+    return createPost(text);
+  }
+}

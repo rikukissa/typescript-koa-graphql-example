@@ -1,4 +1,0 @@
-type Comment {
-  id: ID!
-  text: String!
-}

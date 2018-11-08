@@ -8,3 +8,6 @@ const DATABASE = {
 export function getPosts() {
   return DATABASE.posts;
 }
+export function createPost(text: string) {
+  return getPosts()[0];
+}

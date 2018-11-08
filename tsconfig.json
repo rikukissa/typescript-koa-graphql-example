@@ -12,6 +12,8 @@
     "rootDir": "src",
     "lib": ["esnext.asynciterable", "es2015", "es6"],
     "forceConsistentCasingInFileNames": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
     "noImplicitAny": true,
