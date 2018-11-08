@@ -41,6 +41,7 @@ describe("posts resource", () => {
       });
     });
   });
+
   describe("when a new post is created", () => {
     let response: supertest.Response;
     beforeEach(async () => {

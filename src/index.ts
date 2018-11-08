@@ -1,5 +1,6 @@
 require("app-module-path").addPath(require("path").join(__dirname, "../"));
 import "reflect-metadata";
+
 import * as Koa from "koa";
 import * as mount from "koa-mount";
 
