@@ -10,7 +10,7 @@ const app = new Koa();
 import { buildSchema } from "type-graphql";
 import { PostResolver } from "src/features/posts/resolvers";
 
-async function start() {
+export async function createApp() {
   const schema = await buildSchema({
     resolvers: [PostResolver]
   });
@@ -25,7 +25,12 @@ async function start() {
     )
   );
 
-  app.listen(4000);
+  return app;
 }
 
-start();
+if (!module.parent) {
+  (async () => {
+    const app = await createApp();
+    app.listen(4000);
+  })();
+}
