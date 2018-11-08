@@ -12,7 +12,9 @@ Quick bare minimum setup for new GraphQL API projects with a bare minimum README
 
 #### Other small things
 
-- Lets you import stuff with absolute paths: `import model from '../../../features/comments/model'` vs `import model from 'src/features/comments/model'`
+- Lets you import stuff with absolute paths: 
+
+`import model from 'src/features/comments/model'` **vs** `import model from '../../../features/comments/model'`
 
 ## Get started:
 
