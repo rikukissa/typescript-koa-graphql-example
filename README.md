@@ -1,4 +1,4 @@
-# 💁‍♂️ Typescript - Koa - GraphQL example project  
+# 💁‍♂️ Typescript - Koa - GraphQL example project
 
 Quick bare minimum setup for new GraphQL API projects with a bare minimum README file. It's so minimalistic that eating bread with butter seems excessive afterwards 🍞.
 
@@ -12,13 +12,14 @@ Quick bare minimum setup for new GraphQL API projects with a bare minimum README
 
 #### Other small things
 
-- Lets you import stuff with absolute paths i.e. `import model from 'src/features/comments/model'` 
+- Lets you import stuff with absolute paths i.e. `import model from 'src/features/comments/model'`
 
 ## Get started:
 
 ```
 npm install
 npm start
+npm run migrate
 ```
 
 GraphQL queries can be tested by opening `http://localhost:4000/graphql`. Example queries can be found from index.test.ts.

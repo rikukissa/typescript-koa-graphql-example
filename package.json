@@ -6,10 +6,15 @@
   "license": "NONE",
   "private": true,
   "scripts": {
-    "start": "nodemon -e ts,graphql --exec ts-node -- src/index.ts",
+    "start": "concurrently 'npm run start:dev' 'npm run compose'",
     "start:prod": "ts-node src/index.ts",
+    "start:dev": "nodemon -e ts,graphql --exec ts-node -- src/index.ts",
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "migrate": "knex migrate:latest --knexfile src/database/knexfile.ts",
+    "compose": "yarn run compose:build && yarn run compose:up",
+    "compose:up": "docker-compose -p ts-graphq -f docker-compose.deps.yml up",
+    "compose:build": "docker-compose -f docker-compose.deps.yml build"
   },
   "dependencies": {
     "@types/graphql": "^14.0.3",
@@ -20,9 +25,11 @@
     "app-module-path": "^2.2.0",
     "graphql": "^14.0.2",
     "graphql-import": "^0.7.1",
+    "knex": "^0.15.2",
     "koa": "^2.6.1",
     "koa-graphql": "^0.8.0",
     "koa-mount": "^4.0.0",
+    "pg": "^7.6.1",
     "reflect-metadata": "^0.1.12",
     "ts-node": "^7.0.1",
     "type-graphql": "^0.15.0",
@@ -30,6 +37,8 @@
   },
   "devDependencies": {
     "@types/jest": "^23.3.9",
+    "@types/knex": "^0.15.1",
+    "concurrently": "^4.1.0",
     "jest": "^23.4.2",
     "nodemon": "^1.17.5",
     "prettier": "^1.13.5",
