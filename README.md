@@ -5,10 +5,12 @@ Quick bare minimum setup for new GraphQL API projects with a bare minimum README
 ### What it includes
 
 - **Typescript + TSLint** setup with pretty default config. Turned off few of the most annoying linting rules.
-- Simple **[Koa](https://koajs.com/)** setup with 2 example resources: posts and comments
-- Generates schemas automatically from defined models and resolvers (this is quite nifty)
+- Simple **[Koa](https://koajs.com/)** setup with 3 example resources: posts, tags and comments
+- **Generates GraphQL schemas automatically** from defined models and resolvers (this is quite nifty)
+- **Initial knex migration** + example database queries using **[dataloader](https://github.com/facebook/dataloader)**. This is the magic ✨ that reduces the number of database queries to minimum.
+- Dockerised **PostgreSQL** that starts on `npm start`
 - First few unit tests **([Jest](https://jestjs.io/))** in place that make requests to the Koa app and assert the responses
-- **not much more than that** ✨. Not a big fan of huge boilerplate projects.
+- **not much more than that** 🧘‍♀️. Not a big fan of huge boilerplate projects.
 
 #### Other small things
 
@@ -21,6 +23,22 @@ npm install
 npm start
 npm run migrate
 ```
+
+## Run tests:
+
+```
+npm start
+npm test
+```
+
+or
+
+```
+npm start
+npm run test:watch
+```
+
+Development server needs to be running on background because as it stands, the tests are connecting to the development database. Ugh, I know. Wanted to add this here regardless to demonstrate database query caching.
 
 GraphQL queries can be tested by opening `http://localhost:4000/graphql`. Example queries can be found from index.test.ts.
 
