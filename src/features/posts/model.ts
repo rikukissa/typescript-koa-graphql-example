@@ -26,9 +26,9 @@ export class TagInput implements Partial<Tag> {
 }
 
 @InputType({ description: "New post data" })
-export class PostInput implements Partial<Post> {
+export class PostInput {
   @Field() text: string;
 
   @Field(type => [TagInput])
-  tags: Tag[];
+  tags: TagInput[];
 }

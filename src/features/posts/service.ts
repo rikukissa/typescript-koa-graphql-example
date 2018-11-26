@@ -1,17 +1,37 @@
-import { Tag, Post } from "./model";
-
-const DATABASE: { posts: Post[] } = {
-  posts: [
-    { id: 1, comments: [], text: "moi", tags: [] },
-    { id: 2, comments: [], text: "moi", tags: [] }
-  ]
-};
+import { TagInput, Post } from "./model";
+import { knex } from "src/database";
 
 export function getPosts() {
-  return DATABASE.posts;
+  return knex.select("*").from("posts");
 }
-export function createPost(text: string, tags: Tag[]) {
-  const post = { id: Date.now(), comments: [], text, tags };
-  DATABASE.posts.push(post);
+export function getTags(postId: number) {
+  return knex
+    .select("*")
+    .from("tags")
+    .where("post_id", postId);
+}
+export async function createPost(
+  text: string,
+  tags: TagInput[]
+): Promise<Post> {
+  const post = await knex.transaction<Post>(async trx => {
+    const [postId] = await knex("posts")
+      .transacting(trx)
+      .insert({ text })
+      .returning("id");
+
+    const storedTags = await Promise.all(
+      tags.map(tag =>
+        knex("tags")
+          .transacting(trx)
+          .insert({ text: tag.text, post_id: postId })
+          .returning("id")
+          .then(([id]) => ({ ...tag, id }))
+      )
+    );
+
+    return trx.commit({ id: postId, text, tags: storedTags, comments: [] });
+  });
+
   return post;
 }
