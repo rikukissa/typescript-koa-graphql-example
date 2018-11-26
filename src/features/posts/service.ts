@@ -4,12 +4,18 @@ import { knex } from "src/database";
 export function getPosts() {
   return knex.select("*").from("posts");
 }
-export function getTags(postId: number) {
-  return knex
+
+export async function getPostTagsUsingPostIds(postIds: number[]) {
+  const tags = await knex
     .select("*")
     .from("tags")
-    .where("post_id", postId);
+    .whereIn("post_id", postIds);
+
+  return postIds.map(postId =>
+    tags.filter(({ post_id }: { post_id: number }) => post_id === postId)
+  );
 }
+
 export async function createPost(
   text: string,
   tags: TagInput[]

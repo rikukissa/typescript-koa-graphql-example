@@ -23,6 +23,7 @@
     "@types/node": "^10.12.3",
     "@types/supertest": "^2.0.6",
     "app-module-path": "^2.2.0",
+    "dataloader": "^1.4.0",
     "graphql": "^14.0.2",
     "graphql-import": "^0.7.1",
     "knex": "^0.15.2",

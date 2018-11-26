@@ -6,8 +6,13 @@ import {
   FieldResolver,
   Root
 } from "type-graphql";
-import { getPosts, createPost, getTags } from "./service";
+import { getPosts, createPost, getPostTagsUsingPostIds } from "./service";
 import { Post, PostInput } from "./model";
+import * as DataLoader from "dataloader";
+
+export const loaders = {
+  tagByPostIdLoader: new DataLoader(getPostTagsUsingPostIds)
+};
 
 @Resolver(Post)
 export class PostResolver {
@@ -26,7 +31,7 @@ export class PostResolver {
   }
   @FieldResolver()
   tags(@Root() post: Post) {
-    return getTags(post.id);
+    return loaders.tagByPostIdLoader.load(post.id);
   }
   @FieldResolver()
   comments(@Root() post: Post) {
