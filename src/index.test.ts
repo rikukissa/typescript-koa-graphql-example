@@ -23,7 +23,9 @@ async function createTestData() {
 describe("posts resource", () => {
   describe("when all posts are fetched", () => {
     let response: supertest.Response;
+    let spy: jest.SpyInstance;
     beforeEach(async () => {
+      spy = jest.spyOn(knex, "select");
       const client = await createClient();
       await createTestData();
       response = await client.post("/graphql").send({
@@ -45,6 +47,9 @@ describe("posts resource", () => {
         `
       });
     });
+    afterEach(() => {
+      spy.mockClear();
+    });
     it("lists responds with all existing posts", async () => {
       expect(response.body).toEqual({
         data: {
@@ -59,6 +64,9 @@ describe("posts resource", () => {
           ]
         }
       });
+    });
+    it("only makes 2 database queries to fetch everything", () => {
+      expect(spy.mock.calls).toHaveLength(2);
     });
   });
 
